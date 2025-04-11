@@ -2,27 +2,26 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>فروشگاه من</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>فروشگاه دانشجویی</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
-    <h1>فروشگاه من</h1>
-    <nav>
-      <button onclick="showCart()">سبد خرید</button>
-    </nav>
+    <h1>فروشگاه دانشجویی من</h1>
+    <select id="categoryFilter">
+      <option value="all">همه دسته‌ها</option>
+      <option value="کتاب">کتاب</option>
+      <option value="لوازم">لوازم</option>
+      <option value="پوشاک">پوشاک</option>
+    </select>
   </header>
 
-  <main>
-    <section id="products" class="product-grid"></section>
-    <section id="cart" class="cart hidden">
-      <h2>سبد خرید</h2>
-      <ul id="cart-items"></ul>
-      <p>جمع کل: <span id="total">۰</span> تومان</p>
-      <button onclick="checkout()">ثبت سفارش</button>
-    </section>
-  </main>
+  <main id="product-container"></main>
+
+  <footer>
+    <p>تمامی حقوق محفوظ است</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
