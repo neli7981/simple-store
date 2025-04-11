@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فروشگاه من</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>فروشگاه من</h1>
+    <nav>
+      <button onclick="showCart()">سبد خرید</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="products" class="product-grid"></section>
+    <section id="cart" class="cart hidden">
+      <h2>سبد خرید</h2>
+      <ul id="cart-items"></ul>
+      <p>جمع کل: <span id="total">۰</span> تومان</p>
+      <button onclick="checkout()">ثبت سفارش</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
