@@ -1,57 +1,38 @@
 const products = [
-  { id: 1, name: 'کتاب برنامه‌نویسی', price: 120000, image: 'https://via.placeholder.com/200x150' },
-  { id: 2, name: 'ماگ دانشگاهی', price: 85000, image: 'https://via.placeholder.com/200x150' },
-  { id: 3, name: 'فلش 16 گیگ', price: 150000, image: 'https://via.placeholder.com/200x150' }
+  { id: 1, name: 'کتاب طراحی وب', price: 120000, category: 'کتاب', image: 'https://picsum.photos/200/140?random=1' },
+  { id: 2, name: 'دفتر کلاسوری', price: 45000, category: 'لوازم', image: 'https://picsum.photos/200/140?random=2' },
+  { id: 3, name: 'تی‌شرت دانشجویی', price: 95000, category: 'پوشاک', image: 'https://picsum.photos/200/140?random=3' },
+  { id: 4, name: 'کوله پشتی لپ‌تاپ', price: 320000, category: 'لوازم', image: 'https://picsum.photos/200/140?random=4' },
+  { id: 5, name: 'کتاب زبان تخصصی', price: 99000, category: 'کتاب', image: 'https://picsum.photos/200/140?random=5' },
+  { id: 6, name: 'هودی پاییزی', price: 170000, category: 'پوشاک', image: 'https://picsum.photos/200/140?random=6' }
 ];
 
-let cart = [];
+const container = document.getElementById('product-container');
+const filter = document.getElementById('categoryFilter');
 
-const productsContainer = document.getElementById('products');
-const cartContainer = document.getElementById('cart-items');
-const totalEl = document.getElementById('total');
-
-function renderProducts() {
-  products.forEach(product => {
-    const el = document.createElement('div');
-    el.classList.add('product');
-    el.innerHTML = 
-      <img src="${product.image}" alt="${product.name}" />
-      <h3>${product.name}</h3>
-      <p>${product.price.toLocaleString()} تومان</p>
-      <button onclick="addToCart(${product.id})">افزودن به سبد</button>
+function renderProducts(list) {
+  container.innerHTML = '';
+  list.forEach(product => {
+    container.innerHTML += 
+      <div class="product">
+        <img src="${product.image}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p>${product.price.toLocaleString()} تومان</p>
+        <button>افزودن به سبد</button>
+      </div>
     ;
-    productsContainer.appendChild(el);
   });
 }
 
-function addToCart(id) {
-  const item = products.find(p => p.id === id);
-  cart.push(item);
-  updateCart();
-}
+filter.addEventListener('change', () => {
+  const selected = filter.value;
+  if (selected === 'all') {
+    renderProducts(products);
+  } else {
+    const filtered = products.filter(p => p.category === selected);
+    renderProducts(filtered);
+  }
+});
 
-function updateCart() {
-  cartContainer.innerHTML = '';
-  let total = 0;
-  cart.forEach(item => {
-    total += item.price;
-    const li = document.createElement('li');
-    li.textContent = item.name + ' - ' + item.price.toLocaleString() + ' تومان';
-    cartContainer.appendChild(li);
-  });
-  totalEl.textContent = total.toLocaleString();
-}
-
-function showCart() {
-  document.getElementById('cart').classList.toggle('hidden');
-}
-
-function checkout() {
-  alert('سفارش شما ثبت شد! (شبیه‌سازی)');
-  cart = [];
-  updateCart();
-  showCart();
-}
-
-renderProducts();
+renderProducts(products);
 ﻿
