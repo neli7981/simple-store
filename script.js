@@ -35,3 +35,4 @@ filter.addEventListener('change', () => {
 });
 
 renderProducts(products);
+Force update to trigger Vercel
