@@ -2,27 +2,22 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>فروشگاه دانشجویی</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فروشگاه دانشجویی من</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>فروشگاه دانشجویی من</h1>
-    <select id="categoryFilter">
-      <option value="all">همه دسته‌ها</option>
-      <option value="کتاب">کتاب</option>
-      <option value="لوازم">لوازم</option>
-      <option value="پوشاک">پوشاک</option>
-    </select>
   </header>
-
-  <main id="product-container"></main>
-
-  <footer>
-    <p>تمامی حقوق محفوظ است</p>
-  </footer>
-
+  <nav>
+    <button class="category" data-category="all">همه</button>
+    <button class="category" data-category="کتاب">کتاب</button>
+    <button class="category" data-category="لوازم">لوازم</button>
+  </nav>
+  <main>
+    <div id="product-list"></div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
