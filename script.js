@@ -33,3 +33,40 @@ document.querySelectorAll(".category").forEach(btn => {
 
 // نمایش همه‌ی محصولات به صورت پیش‌فرض
 displayProducts("all");
+function displayProducts(products) {
+  const productList = document.getElementById("product-list");
+  productList.innerHTML = "";
+  products.forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card";
+
+    const name = document.createElement("h3");
+    name.textContent = product.name;
+
+    const price = document.createElement("p");
+    price.textContent = product.price + " تومان";
+
+    // ✅ اضافه کردن دکمه سبد خرید
+    const addButton = document.createElement("button");
+    addButton.textContent = "افزودن به سبد خرید";
+    addButton.addEventListener("click", () => {
+      addToCart(product.price);
+    });
+
+    productCard.appendChild(name);
+    productCard.appendChild(price);
+    productCard.appendChild(addButton); // اینجا اضافه می‌کنیم
+    productList.appendChild(productCard);
+  });
+}
+let cartCount = 0;
+let cartTotal = 0;
+
+function addToCart(price) {
+  cartCount++;
+  cartTotal += price;
+
+  document.getElementById("cart-count").textContent = cartCount;
+  document.getElementById("cart-total").textContent = cartTotal.toLocaleString() + " تومان";
+}
+
