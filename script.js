@@ -49,3 +49,44 @@ window.onload = () => {
     });
   });
 };
+let cart = [];
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  const existing = cart.find(item => item.id === productId);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  updateCartDisplay();
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  updateCartDisplay();
+}
+
+function updateCartDisplay() {
+  const cartList = document.getElementById("cart-items");
+  const totalPrice = document.getElementById("cart-total");
+
+  cartList.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <button class="remove" onclick="removeFromCart(${item.id})">حذف</button>
+      ${item.name} × ${item.quantity} = ${item.price * item.quantity} تومان
+    `;
+    cartList.appendChild(li);
+    total += item.price * item.quantity;
+  });
+
+  totalPrice.textContent = `مبلغ کل: ${total.toLocaleString()} تومان`;
+}
+
