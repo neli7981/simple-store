@@ -86,7 +86,7 @@ main {
 }
 
 #checkout-button {
-  background-color: #4CAF50;
+  background-color: #ffb8d9;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -96,7 +96,7 @@ main {
 }
 
 #checkout-button:hover {
-  background-color: #45a049;
+  background-color: #ff69b4;
 }
 
 button.remove {
