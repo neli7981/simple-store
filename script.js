@@ -69,5 +69,9 @@ function filterByCategory(category) {
 
 // نمایش اولیه همه محصولات
 displayProducts();
-
-
+image: "img/دفتر کلاسوری.jpg"
+image: "img/روان نویس رنگی.jpg"
+image: "img/فلش 32.jpg"
+image: "img/ماشین حساب.jpg"
+image: "img/ماگ.jpg"
+image: "img/کیف.jpg"
