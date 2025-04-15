@@ -41,7 +41,6 @@ function filterByCategory(category) {
 window.onload = () => {
   displayProducts(products);
 
-  // دکمه‌های دسته‌بندی رو فعال کن
   document.querySelectorAll(".category-button").forEach(btn => {
     btn.addEventListener("click", () => {
       const cat = btn.getAttribute("data-category");
@@ -105,5 +104,9 @@ function addToCart(productId) {
 
   updateCartSummary(); 
   updateCartTotal();  
+}
+function updateCartTotal() {
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  document.getElementById("cart-total").textContent = `مجموع: ${total.toLocaleString()} تومان`;
 }
 
