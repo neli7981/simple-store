@@ -12,9 +12,11 @@ let cart = [];
 function displayProducts(category = "all") {
   const productList = document.getElementById("product-list");
   productList.innerHTML = "";
-
+  const img = document.createElement("img");
+  img.src = product.image;
+  img.alt = product.name;
+  img.classList.add("product-image");
   const filtered = category === "all" ? products : products.filter(p => p.category === category);
-
   filtered.forEach(product => {
     const div = document.createElement("div");
     div.className = "product-card";
