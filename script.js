@@ -59,7 +59,7 @@ function addToCart(productId) {
   } else {
     cart.push({ ...product, quantity: 1 });
   }
-
+renderCartItems();
   updateCartDisplay();
 }
 
@@ -108,5 +108,15 @@ function addToCart(productId) {
 function updateCartTotal() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   document.getElementById("cart-total").textContent = `مجموع: ${total.toLocaleString()} تومان`;
+}
+function renderCartItems() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  cartItemsContainer.innerHTML = ""; 
+
+  cart.forEach((item) => {
+    const itemElement = document.createElement("p");
+    itemElement.textContent = `${item.name} × ${item.quantity}`;
+    cartItemsContainer.appendChild(itemElement);
+  });
 }
 
