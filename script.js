@@ -1,122 +1,73 @@
 const products = [
-  { id: 1, name: "دفتر کلاسوری", price: 50000, category: "لوازم‌التحریر" },
-  { id: 2, name: "ماشین حساب", price: 150000, category: "الکترونیکی" },
-  { id: 3, name: "ماگ دانشجویی", price: 70000, category: "اکسسوری" },
-  { id: 4, name: "روان‌نویس رنگی", price: 30000, category: "لوازم‌التحریر" },
-  { id: 5, name: "فلش مموری 16GB", price: 95000, category: "الکترونیکی" },
-  { id: 6, name: "کیف لپ‌تاپ", price: 220000, category: "اکسسوری" }
+  { id: 1, name: "دفتر کلاسوری", price: 50000, category: "لوازم التحریر" },
+  { id: 2, name: "ماشین حساب", price: 70000, category: "الکترونیکی" },
+  { id: 3, name: "ماگ دانشجویی", price: 60000, category: "اکسسوری" },
+  { id: 4, name: "روان نویس رنگی", price: 30000, category: "لوازم التحریر" },
+  { id: 5, name: "فلش 32 گیگ", price: 120000, category: "الکترونیکی" },
+  { id: 6, name: "کیف لپ تاپ", price: 250000, category: "اکسسوری" }
 ];
 
-function displayProducts(productsToShow) {
+let cart = [];
+
+function displayProducts(category = "all") {
   const productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  productsToShow.forEach(product => {
-    const productDiv = document.createElement("div");
-    productDiv.className = "product-card";
-    productDiv.innerHTML = `
+  const filtered = category === "all" ? products : products.filter(p => p.category === category);
+
+  filtered.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "product-card";
+    div.innerHTML = `
       <h3>${product.name}</h3>
-      <p>قیمت: ${product.price} تومان</p>
-      <button onclick="addToCart(${product.id})">افزودن به سبد</button>
+      <p>قیمت: ${product.price.toLocaleString()} تومان</p>
+      <button onclick="addToCart(${product.id})">افزودن به سبد خرید</button>
     `;
-    productList.appendChild(productDiv);
+    productList.appendChild(div);
   });
 }
-
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  alert(`محصول "${product.name}" به سبد خرید اضافه شد!`);
-}
-
-function filterByCategory(category) {
-  if (category === "all") {
-    displayProducts(products);
-  } else {
-    const filtered = products.filter(p => p.category === category);
-    displayProducts(filtered);
-  }
-}
-
-// وقتی صفحه بارگذاری شد، همه محصولات رو نشون بده
-window.onload = () => {
-  displayProducts(products);
-
-  document.querySelectorAll(".category-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const cat = btn.getAttribute("data-category");
-      filterByCategory(cat);
-    });
-  });
-};
-let cart = [];
 
 function addToCart(productId) {
   const product = products.find(p => p.id === productId);
   const existing = cart.find(item => item.id === productId);
 
   if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({ ...product, quantity: 1 });
-  }
-renderCartItems();
-  updateCartDisplay();
-}
-
-function removeFromCart(productId) {
-  cart = cart.filter(item => item.id !== productId);
-  updateCartDisplay();
-}
-
-function updateCartDisplay() {
-  const cartList = document.getElementById("cart-items");
-  const totalPrice = document.getElementById("cart-total");
-
-  cartList.innerHTML = "";
-
-  let total = 0;
-
-  cart.forEach(item => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <button class="remove" onclick="removeFromCart(${item.id})">حذف</button>
-      ${item.name} × ${item.quantity} = ${item.price * item.quantity} تومان
-    `;
-    cartList.appendChild(li);
-    total += item.price * item.quantity;
-  });
-
-  totalPrice.textContent = `مبلغ کل: ${total.toLocaleString()} تومان`;
-}
-function updateCartSummary() {
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-  document.getElementById("cart-summary").textContent = `${cartCount} آیتم در سبد خرید`;
-}
-function addToCart(productId) {
-  const product = products.find((p) => p.id === productId);
-  const existing = cart.find((item) => item.id === productId);
-  
-  if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({ ...product, quantity: 1 });
   }
 
-  updateCartSummary(); 
-  updateCartTotal();  
+  updateCartSummary();
+  updateCartTotal();
+  renderCartItems();
 }
-function updateCartTotal() {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  document.getElementById("cart-total").textContent = `مجموع: ${total.toLocaleString()} تومان`;
-}
-function renderCartItems() {
-  const cartItemsContainer = document.getElementById("cart-items");
-  cartItemsContainer.innerHTML = ""; 
 
-  cart.forEach((item) => {
-    const itemElement = document.createElement("p");
-    itemElement.textContent = `${item.name} × ${item.quantity}`;
-    cartItemsContainer.appendChild(itemElement);
+function updateCartSummary() {
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-summary").textContent = `${totalItems} آیتم در سبد خرید`;
+}
+
+function updateCartTotal() {
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  document.getElementById("cart-total").textContent = `مجموع: ${totalPrice.toLocaleString()} تومان`;
+}
+
+function renderCartItems() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+
+  cart.forEach(item => {
+    const p = document.createElement("p");
+    p.textContent = `${item.name} × ${item.quantity}`;
+    container.appendChild(p);
   });
 }
+
+function filterByCategory(category) {
+  displayProducts(category);
+}
+
+// نمایش اولیه همه محصولات
+displayProducts();
+
 
