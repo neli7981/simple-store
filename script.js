@@ -89,3 +89,21 @@ function updateCartDisplay() {
 
   totalPrice.textContent = `مبلغ کل: ${total.toLocaleString()} تومان`;
 }
+function updateCartSummary() {
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  document.getElementById("cart-summary").textContent = `${cartCount} آیتم در سبد خرید`;
+}
+function addToCart(productId) {
+  const product = products.find((p) => p.id === productId);
+  const existing = cart.find((item) => item.id === productId);
+  
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  updateCartSummary(); 
+  updateCartTotal();  
+}
+
