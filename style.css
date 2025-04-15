@@ -148,15 +148,15 @@ button.remove {
     margin: 5px 3px;
   }
 .product-image {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
   header h1 {
     font-size: 20px;
