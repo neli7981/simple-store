@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "دفتر کلاسوری", price: 50000, category: "لوازم التحریر" },
-  { id: 2, name: "ماشین حساب", price: 70000, category: "الکترونیکی" },
-  { id: 3, name: "ماگ دانشجویی", price: 60000, category: "اکسسوری" },
-  { id: 4, name: "روان نویس رنگی", price: 30000, category: "لوازم التحریر" },
-  { id: 5, name: "فلش 32 گیگ", price: 120000, category: "الکترونیکی" },
-  { id: 6, name: "کیف لپ تاپ", price: 250000, category: "اکسسوری" }
+  { id: 1, name: "دفتر کلاسوری", price: 50000, category: "لوازم التحریر" img/دفتر کلاسوری.jpg },
+  { id: 2, name: "ماشین حساب", price: 70000, category: "الکترونیکی" img/ماشین حساب.jpg },
+  { id: 3, name: "ماگ دانشجویی", price: 60000, category: "اکسسوری" img/ماگ.jpg },
+  { id: 4, name: "روان نویس رنگی", price: 30000, category: "لوازم التحریر" img/روان نویس رنگی.jpg },
+  { id: 5, name: "فلش 32 گیگ", price: 120000, category: "الکترونیکی" img/فلش 32.jpg },
+  { id: 6, name: "کیف لپ تاپ", price: 250000, category: "اکسسوری" img/کیف.jpg }
 ];
 
 let cart = [];
@@ -18,11 +18,13 @@ function displayProducts(category = "all") {
   filtered.forEach(product => {
     const div = document.createElement("div");
     div.className = "product-card";
-    div.innerHTML = `
-      <h3>${product.name}</h3>
-      <p>قیمت: ${product.price.toLocaleString()} تومان</p>
-      <button onclick="addToCart(${product.id})">افزودن به سبد خرید</button>
-    `;
+div.innerHTML = `
+  <img src="${product.image}" alt="${product.name}" class="product-image" />
+  <h3>${product.name}</h3>
+  <p>قیمت: ${product.price.toLocaleString()} تومان</p>
+  <button onclick="addToCart(${product.id})">افزودن به سبد خرید</button>
+`;
+
     productList.appendChild(div);
   });
 }
@@ -69,9 +71,3 @@ function filterByCategory(category) {
 
 // نمایش اولیه همه محصولات
 displayProducts();
-image: "img/دفتر کلاسوری.jpg"
-image: "img/روان نویس رنگی.jpg"
-image: "img/فلش 32.jpg"
-image: "img/ماشین حساب.jpg"
-image: "img/ماگ.jpg"
-image: "img/کیف.jpg"
