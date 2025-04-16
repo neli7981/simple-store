@@ -86,18 +86,31 @@ function addToCart(product) {
 }
 
 function updateCart() {
-  cartSummary.innerHTML = "";
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartTotalElement = document.getElementById("cart-total");
+
+  cartItemsContainer.innerHTML = "";
   let total = 0;
 
-  cart.forEach((item) => {
-    const p = document.createElement("p");
-    p.textContent = item.name;
-    cartSummary.appendChild(p);
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ${item.price} تومان`;
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "حذف";
+    removeButton.addEventListener("click", () => {
+      removeFromCart(index);
+    });
+
+    li.appendChild(removeButton);
+    cartItemsContainer.appendChild(li);
+
     total += item.price;
   });
 
-  cartTotal.textContent = `مبلغ کل: ${total.toLocaleString()} تومان`;
+  cartTotalElement.textContent = total;
 }
+
 
 function filterCategory(category) {
   if (category === "همه") {
