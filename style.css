@@ -145,6 +145,11 @@ button.remove {
 }
 
 .product {
+
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
+
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -165,6 +170,14 @@ button.remove {
   display: block;
   margin: 0 auto 10px;
   border-radius: 8px;
+}
+.product img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px;
 }
 
 
