@@ -157,3 +157,10 @@ function filterCategory(category) {
 document.addEventListener("DOMContentLoaded", () => {
   displayProducts(products);
 });
+function removeFromCart(productName) {
+  const index = cart.findIndex((item) => item.name === productName);
+  if (index !== -1) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+}
