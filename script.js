@@ -20,7 +20,7 @@ const products = [
   {
     name: "فلش 32 گیگ",
     price: 200000,
-    image: "./img/فلش.jpg",
+    image: "./img/فلش 32.jpg",
     category: "الکترونیکی",
   },
   {
