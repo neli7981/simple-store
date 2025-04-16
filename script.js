@@ -92,57 +92,42 @@ function updateCart() {
   cartItemsContainer.innerHTML = "";
   let total = 0;
 
-const groupedCart = {};
-cart.forEach((item) => {
-  if (groupedCart[item.name]) {
-    groupedCart[item.name].count += 1;
-  } else {
-    groupedCart[item.name] = { ...item, count: 1 };
-  }
-});
-
-for (let key in groupedCart) {
-  const item = groupedCart[key];
-
-  const li = document.createElement("li");
-  li.textContent = `${item.name} ×${item.count} - ${item.price * item.count} تومان`;
-
-  const removeButton = document.createElement("button");
-  removeButton.textContent = "حذف";
-  removeButton.addEventListener("click", () => {
-    removeFromCart(item.name);
+  // گروهبندی آیتم‌های مشابه
+  const groupedCart = {};
+  cart.forEach((item) => {
+    if (groupedCart[item.name]) {
+      groupedCart[item.name].count += 1;
+    } else {
+      groupedCart[item.name] = { ...item, count: 1 };
+    }
   });
 
-  li.appendChild(removeButton);
-  cartItemsContainer.appendChild(li);
+  for (let key in groupedCart) {
+    const item = groupedCart[key];
 
-  total += item.price * item.count;
-}
-
+    const li = document.createElement("li");
+    li.textContent = `${item.name} ×${item.count} - ${item.price * item.count} تومان`;
 
     const removeButton = document.createElement("button");
     removeButton.textContent = "حذف";
     removeButton.addEventListener("click", () => {
-      removeFromCart(index);
+      removeFromCart(item.name);
     });
 
     li.appendChild(removeButton);
     cartItemsContainer.appendChild(li);
 
-    total += item.price;
-  });
+    total += item.price * item.count;
+  }
 
-  cartTotalElement.textContent = total;
-}
+  // آپدیت تعداد آیتم‌ها در cart-summary
   const cartSummary = document.getElementById("cart-summary");
   if (cartSummary) {
     cartSummary.textContent = `تعداد آیتم‌ها: ${cart.length}`;
   }
-let total = 0;
-...
-total += item.price;
-...
-cartTotalElement.textContent = total;
+
+  cartTotalElement.textContent = total;
+}
 
 
 function filterCategory(category) {
