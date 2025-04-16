@@ -17,12 +17,13 @@
   🛒 تعداد آیتم‌ها: <span id="cart-count">0</span> | جمع کل: <span id="cart-total">۰ تومان</span>
 </section>
 
-  <div id="categories">
-  <button class="category-button" data-category="all">همه</button>
-  <button class="category-button" data-category="لوازم‌التحریر">لوازم‌التحریر</button>
-  <button class="category-button" data-category="الکترونیکی">الکترونیکی</button>
-  <button class="category-button" data-category="اکسسوری">اکسسوری</button>
+ <div id="category-buttons">
+  <button onclick="filterProducts('all')">همه</button>
+  <button onclick="filterProducts('stationery')">لوازم تحریر</button>
+  <button onclick="filterProducts('electronics')">الکترونیکی</button>
+  <button onclick="filterProducts('accessory')">اکسسوری</button>
 </div>
+
 
   <main> <div id="product-list"></div> </main>
   <script src="script.js"></script>
