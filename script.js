@@ -129,16 +129,14 @@ function updateCart() {
   cartTotalElement.textContent = total;
 }
 
-
-function filterCategory(category) {
+function filterProducts(category) {
   if (category === "همه") {
     displayProducts(products);
   } else {
-    const filtered = products.filter((p) => p.category === category);
+    const filtered = products.filter(product => product.category === category);
     displayProducts(filtered);
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   displayProducts(products);
 });
