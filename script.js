@@ -145,7 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function removeFromCart(productName) {
   const index = cart.findIndex((item) => item.name === productName);
   if (index !== -1) {
-    cart.splice(index, 1);
-    updateCart();
+    cart.splice(index, 1); // حذف کالا از آرایه
+    updateCart(); // آپدیت سبد خرید بعد از حذف
   }
 }
+
