@@ -1,79 +1,82 @@
 const products = [
   {
-    id: 1,
-    name: "ماشین حساب",
-    price: 250000,
-    category: "الکترونیکی",
-    image: "img/ماشین حساب.jpg"
-  },
-  {
-    id: 2,
-    name: "ماگ طرح فضانورد",
-    price: 120000,
-    category: "اکسسوری",
-    image: "img/ماگ.jpg"
-  },
-  {
-    id: 3,
-    name: "دفتر کلاسوری",
-    price: 80000,
-    category: "لوازم تحریر",
-    image: "img/دفتر کلاسوری.jpg"
-  },
-  {
-    id: 4,
-    name: "فلش مموری 32GB",
-    price: 150000,
-    category: "الکترونیکی",
-    image: "img/فلش 32.jpg"
-  },
-  {
-    id: 5,
-    name: "روان نویس رنگی",
+    name: "ماشین حساب فانتزی",
     price: 200000,
-    category: "لوازم تحریر",
-    image: "img/روان نویس رنگی.jpg"
+    image: "./img/ماشین حساب.jpg",
+    category: "الکترونیکی",
   },
   {
-    id: 6,
-    name: "کیف لپ تاپ",
-    price: 320000,
+    name: "ماگ طرح فضانورد",
+    price: 150000,
+    image: "./img/ماگ.jpg",
     category: "اکسسوری",
-    image: "img/کیف.jpg"
-  }
+  },
+  {
+    name: "دفتر کلاسوری",
+    price: 100000,
+    image: "./img/دفتر کلاسوری.jpg",
+    category: "لوازم تحریر",
+  },
+  {
+    name: "فلش 32 گیگ",
+    price: 200000,
+    image: "./img/فلش.jpg",
+    category: "الکترونیکی",
+  },
+  {
+    name: "روان نویس رنگی",
+    price: 40000,
+    image: "./img/روان نویس رنگی.jpg",
+    category: "لوازم تحریر",
+  },
+  {
+    name: "کیف لپ‌تاپ",
+    price: 250000,
+    image: "./img/کیف.jpg",
+    category: "اکسسوری",
+  },
 ];
 
-const cart = [];
+const productList = document.getElementById("product-list");
+const cartSummary = document.getElementById("cart-summary");
+const cartTotal = document.getElementById("cart-total");
 
-function displayProducts(productArray) {
-  const productList = document.getElementById("product-list");
+let cart = [];
+
+function displayProducts(productsToShow) {
   productList.innerHTML = "";
 
-  productArray.forEach(product => {
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("product");
+  productsToShow.forEach((product) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
 
     const img = document.createElement("img");
     img.src = product.image;
     img.alt = product.name;
-    img.classList.add("product-image");
+
+    // استایل دستی عکس
+    img.style.width = "100%";
+    img.style.height = "180px";
+    img.style.objectFit = "cover";
+    img.style.borderRadius = "10px";
+    img.style.display = "block";
 
     const name = document.createElement("h3");
     name.textContent = product.name;
 
     const price = document.createElement("p");
-    price.textContent = `${product.price.toLocaleString()} تومان`;
+    price.textContent = `قیمت: ${product.price.toLocaleString()} تومان`;
 
     const btn = document.createElement("button");
     btn.textContent = "افزودن به سبد خرید";
     btn.addEventListener("click", () => addToCart(product));
 
-    productDiv.appendChild(img);
-    productDiv.appendChild(name);
-    productDiv.appendChild(price);
-    productDiv.appendChild(btn);
+    card.appendChild(img);
+    card.appendChild(name);
+    card.appendChild(price);
+    card.appendChild(btn);
 
-    productList.appendChild(productDiv);
+    productList.appendChild(card);
   });
 }
 
@@ -83,32 +86,28 @@ function addToCart(product) {
 }
 
 function updateCart() {
-  const cartItems = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
-  const cartSummary = document.getElementById("cart-summary");
-
-  cartItems.innerHTML = "";
+  cartSummary.innerHTML = "";
   let total = 0;
 
-  cart.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item.name + " - " + item.price.toLocaleString() + " تومان";
-    cartItems.appendChild(li);
+  cart.forEach((item) => {
+    const p = document.createElement("p");
+    p.textContent = item.name;
+    cartSummary.appendChild(p);
     total += item.price;
   });
 
-  cartTotal.textContent = total.toLocaleString();
-  cartSummary.textContent = cart.length;
+  cartTotal.textContent = `مبلغ کل: ${total.toLocaleString()} تومان`;
 }
 
-function filterProducts(category) {
-  if (category === "all") {
+function filterCategory(category) {
+  if (category === "همه") {
     displayProducts(products);
   } else {
-    const filtered = products.filter(p => p.category === category);
+    const filtered = products.filter((p) => p.category === category);
     displayProducts(filtered);
   }
 }
 
-// نمایش اولیه همه محصولات
-displayProducts(products);
+document.addEventListener("DOMContentLoaded", () => {
+  displayProducts(products);
+});
