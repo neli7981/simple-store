@@ -130,7 +130,7 @@ function updateCart() {
 }
 
 function filterProducts(category) {
-  if (category === "همه") {
+  if (category === "all") {
     displayProducts(products);
   } else {
     const filtered = products.filter(product => product.category === category);
@@ -146,5 +146,21 @@ function removeFromCart(productName) {
     cart.splice(index, 1); // حذف کالا از آرایه
     updateCart(); // آپدیت سبد خرید بعد از حذف
   }
+}
+function displayProducts(productsArray) {
+  const productList = document.getElementById("product-list");
+  productList.innerHTML = "";
+
+  productsArray.forEach(product => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card";
+    productCard.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.price} تومان</p>
+      <button onclick="addToCart('${product.name}')">افزودن به سبد خرید</button>
+    `;
+    productList.appendChild(productCard);
+  });
 }
 
