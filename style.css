@@ -160,13 +160,13 @@ button.remove {
 
 .product-image {
   width: 100%;
-  max-width: 160px;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   display: block;
   margin: 0 auto 10px;
   border-radius: 8px;
 }
+
 
   .category-button {
     padding: 10px;
