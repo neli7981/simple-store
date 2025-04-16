@@ -147,20 +147,3 @@ function removeFromCart(productName) {
     updateCart(); // آپدیت سبد خرید بعد از حذف
   }
 }
-function displayProducts(productsArray) {
-  const productList = document.getElementById("product-list");
-  productList.innerHTML = "";
-
-  productsArray.forEach(product => {
-    const productCard = document.createElement("div");
-    productCard.className = "product-card";
-    productCard.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>${product.price} تومان</p>
-      <button onclick="addToCart('${product.name}')">افزودن به سبد خرید</button>
-    `;
-    productList.appendChild(productCard);
-  });
-}
-
