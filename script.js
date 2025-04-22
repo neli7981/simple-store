@@ -130,20 +130,15 @@ function updateCart() {
 }
 
 function filterProducts(category) {
-  if (category === "all") {
-    displayProducts(products);
-  } else {
-    const filtered = products.filter(product => product.category === category);
-    displayProducts(filtered);
-  }
-}
-document.addEventListener("DOMContentLoaded", () => {
-  displayProducts(products);
-});
-function removeFromCart(productName) {
-  const index = cart.findIndex((item) => item.name === productName);
-  if (index !== -1) {
-    cart.splice(index, 1); // حذف کالا از آرایه
-    updateCart(); // آپدیت سبد خرید بعد از حذف
-  }
+  // فیلتر کردن کالاها
+  const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+  displayProducts(filtered);
+
+  // پاک کردن حالت active از همه دکمه‌ها
+  const buttons = document.querySelectorAll('.category-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  // اضافه کردن active به دکمه کلیک شده
+  const clickedBtn = Array.from(buttons).find(btn => btn.innerText === category || (category === 'all' && btn.innerText === 'همه'));
+  if (clickedBtn) clickedBtn.classList.add('active');
 }
