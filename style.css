@@ -218,7 +218,7 @@ footer {
   border: 2px solid #ff69b4;
 }
 .add-to-cart {
-  background-color: #4caf50;
+  background-color: #ff69b4;
   color: white;
   padding: 8px 12px;
   margin-top: 10px;
@@ -229,7 +229,7 @@ footer {
   transition: 0.3s;
 }
 .add-to-cart:hover {
-  background-color: #45a049;
+  background-color: #ffe0e5;
 }
 
 .remove-from-cart {
