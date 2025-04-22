@@ -36,8 +36,8 @@ nav {
   background-color: #4CAF50;
   color: white;
 }
-.category-button {
-background: linear-gradient(to right, #6a11cb, #2575fc);
+.category-btn {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -49,11 +49,12 @@ background: linear-gradient(to right, #6a11cb, #2575fc);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-.category-button:hover {
- transform: scale(1.05);
+
+.category-btn:hover {
+  transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0.95;
 }
+
 
 main {
   padding: 2rem;
