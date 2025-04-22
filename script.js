@@ -49,6 +49,12 @@ function displayProducts(productsToShow) {
   productsToShow.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
+    const addToCartBtn = document.createElement("button");
+    addToCartBtn.innerText = "افزودن به سبد خرید";
+    addToCartBtn.classList.add("add-to-cart");
+    const removeBtn = document.createElement("button");
+    removeBtn.innerText = "حذف";
+    removeBtn.classList.add("remove-from-cart");
 
     const img = document.createElement("img");
     img.src = product.image;
