@@ -37,24 +37,22 @@ nav {
   color: white;
 }
 .category-button {
-  background-color: #fff;
-  color: #333;
-  border: 2px solid #ff69b4;
-  padding: 8px 16px;
-  margin: 5px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem;
   border-radius: 30px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-
 .category-button:hover {
-  background-color: #ff69b4;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+ transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
 }
 
 main {
