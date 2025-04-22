@@ -142,3 +142,6 @@ function filterProducts(category) {
   const clickedBtn = Array.from(buttons).find(btn => btn.innerText === category || (category === 'all' && btn.innerText === 'همه'));
   if (clickedBtn) clickedBtn.classList.add('active');
 }
+document.addEventListener("DOMContentLoaded", () => {
+  filterProducts("all"); // نمایش خودکار همه محصولات هنگام بارگذاری سایت
+});
