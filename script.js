@@ -125,11 +125,13 @@ function updateCart() {
     const li = document.createElement("li");
     li.textContent = `${item.name} ×${item.count} - ${item.price * item.count} تومان`;
 
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "حذف";
-    removeButton.addEventListener("click", () => {
-      removeFromCart(item.name);
-    });
+   const removeBtn = document.createElement("button");
+removeBtn.innerText = "حذف";
+removeBtn.classList.add("remove-from-cart"); // اضافه کردن کلاس به دکمه حذف
+removeBtn.addEventListener("click", () => {
+  removeFromCart(index);
+});
+cartItem.appendChild(removeBtn);
 
     li.appendChild(removeButton);
     cartItemsContainer.appendChild(li);
