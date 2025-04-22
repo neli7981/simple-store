@@ -51,19 +51,20 @@ function displayProducts(productsToShow) {
     card.className = "product-card";
     const addToCartBtn = document.createElement("button");
 addToCartBtn.innerText = "افزودن به سبد خرید";
-addToCartBtn.classList.add("add-to-cart");
+addToCartBtn.classList.add("add-to-cart"); // اضافه کردن کلاس به دکمه
 addToCartBtn.addEventListener("click", () => {
   addToCart(product);
 });
 productCard.appendChild(addToCartBtn);
 
-    const removeBtn = document.createElement("button");
+const removeBtn = document.createElement("button");
 removeBtn.innerText = "حذف";
-removeBtn.classList.add("remove-from-cart");
+removeBtn.classList.add("remove-from-cart"); // اضافه کردن کلاس به دکمه حذف
 removeBtn.addEventListener("click", () => {
   removeFromCart(index);
 });
 cartItem.appendChild(removeBtn);
+
 
 
     const img = document.createElement("img");
