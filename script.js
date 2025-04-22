@@ -50,11 +50,21 @@ function displayProducts(productsToShow) {
     const card = document.createElement("div");
     card.className = "product-card";
     const addToCartBtn = document.createElement("button");
-    addToCartBtn.innerText = "افزودن به سبد خرید";
-    addToCartBtn.classList.add("add-to-cart");
+addToCartBtn.innerText = "افزودن به سبد خرید";
+addToCartBtn.classList.add("add-to-cart");
+addToCartBtn.addEventListener("click", () => {
+  addToCart(product);
+});
+productCard.appendChild(addToCartBtn);
+
     const removeBtn = document.createElement("button");
-    removeBtn.innerText = "حذف";
-    removeBtn.classList.add("remove-from-cart");
+removeBtn.innerText = "حذف";
+removeBtn.classList.add("remove-from-cart");
+removeBtn.addEventListener("click", () => {
+  removeFromCart(index);
+});
+cartItem.appendChild(removeBtn);
+
 
     const img = document.createElement("img");
     img.src = product.image;
