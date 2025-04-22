@@ -72,7 +72,7 @@ main {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   text-align: center;
-  background-color: #fff;
+  background-color: #ffe9f4 ;
   transition: transform 0.3s;
 }
 
@@ -205,17 +205,17 @@ button.remove {
 footer {
   margin-top: 50px;
   padding: 20px;
-  background-color: #f1f1f1;
+  background-color: #ce586e;
   text-align: center;
   font-size: 14px;
   color: #ff69b4;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ffe0e5;
   border-radius: 12px;
 }
 .category-btn.active {
   background: #fff;
-  color: #2575fc;
-  border: 2px solid #2575fc;
+  color: #ffb8d9;
+  border: 2px solid #ff69b4;
 }
 .add-to-cart {
   background-color: #4caf50;
