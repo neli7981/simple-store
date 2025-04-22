@@ -212,3 +212,9 @@ footer {
   border-top: 1px solid #ddd;
   border-radius: 12px;
 }
+.category-btn.active {
+  background: #fff;
+  color: #2575fc;
+  border: 2px solid #2575fc;
+}
+
