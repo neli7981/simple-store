@@ -217,4 +217,35 @@ footer {
   color: #2575fc;
   border: 2px solid #2575fc;
 }
+.add-to-cart {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.add-to-cart:hover {
+  background-color: #5848e5;
+}
+.remove-from-cart {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 0.9rem;
+}
+
+.remove-from-cart:hover {
+  background-color: #cc0000;
+}
 
