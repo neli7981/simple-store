@@ -148,4 +148,13 @@ function filterProducts(category) {
 document.addEventListener("DOMContentLoaded", () => {
   filterProducts("all");
 });
+document.getElementById("order-btn").addEventListener("click", () => {
+  const sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
+
+  setTimeout(() => {
+    alert("سفارش شما با موفقیت ثبت شد! 🌼");
+  }, 300); // یه تاخیر کوچیک برای همزمانی با صدا
+});
 
