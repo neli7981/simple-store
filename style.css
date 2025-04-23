@@ -251,3 +251,20 @@ footer {
 .remove-from-cart:hover {
   background-color: #d32f2f;
 }
+.order-button {
+  background-color: #fbeedb; /* کرم ملایم */
+  color: #333;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px #d9d0c1, -6px -6px 12px #fff5e8;
+  transition: all 0.2s ease-in-out;
+}
+
+.order-button:hover {
+  box-shadow: inset 2px 2px 5px #d9d0c1, inset -2px -2px 5px #fff5e8;
+  transform: scale(0.98);
+}
