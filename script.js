@@ -144,6 +144,9 @@ function filterProducts(category) {
   const clickedBtn = Array.from(buttons).find(btn => btn.innerText === category || (category === 'all' && btn.innerText === 'همه'));
   if (clickedBtn) clickedBtn.classList.add('active');
 }
+document.addEventListener("DOMContentLoaded", () => {
+  filterProducts("all"); // نمایش خودکار همه محصولات هنگام بارگذاری سایت
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const orderBtn = document.getElementById("order-btn");
@@ -162,4 +165,13 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn("دکمه ثبت سفارش پیدا نشد!");
   }
+});
+// ایجاد عنصر صوتی
+const clickSound = new Audio('./sounds/click.wav');
+
+// افزودن رویداد کلیک به دکمه‌ها
+document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', () => {
+    clickSound.play();
+  });
 });
